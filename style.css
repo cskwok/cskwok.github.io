@@ -98,15 +98,6 @@ nav {
     scale: 1;    
 }
 
-.content {
-    padding: 2rem;
-    max-width: 90%;
-}
-
-.content > * {
-    padding: .5rem 2rem;
-}
-
 .home {    
     margin-top: 5em;
     background-color: var(--clr-primary);   
@@ -119,18 +110,19 @@ nav {
     padding: 1.3rem 2rem;
 }
 
-.about {
-    height: 80vh;
+.about {    
     position: relative;   
     justify-content: flex-end;    
 }
 
 .about > .content {
+    width: 70%;
     margin: 3.5rem 1rem;    
 }
 
 .about > .content > p {
     line-height: clamp(1.2rem,4vw,2rem);
+    margin-top: 2rem;
 }
 
 .about::before{
@@ -162,18 +154,19 @@ nav {
     clip-path: polygon(0 0, 0 100%, 100% 100%);
 }
 
-.skills > .content {
-    justify-content: center;
+.skills > .content > h2 {
+    margin: auto 2em;
 }
-
 
 
 .wrapper {
     width: 100%;   
     margin: 1.5em auto;
+    padding-bottom: 3em;
     display: flex;
     flex-wrap: wrap;    
     align-items: center;
+    justify-content: center;
     font-size: clamp(.9rem,2vw,1.2rem);
 }
 
@@ -210,6 +203,14 @@ nav {
     clip-path: polygon(0 0, 50% 100%, 100% 0, 100% 100%, 0 100%);
 }
 
+.contact > .content {
+    margin: 3em auto;
+}
+
+.contact > .content > p {
+    margin: 1em auto;
+}
+
 @media(max-width: 35em) {
     .home {    
         margin-top: 0;        
@@ -225,7 +226,6 @@ nav {
         box-shadow: none;
         transform: translateX(100%);
         transition: transform .35s ease-out;
-
     }
 
     .nav-bar[data-expanded="true"]{
@@ -249,11 +249,5 @@ nav {
     }
     .skills > .content {
         justify-content: flex-start;        
-    }
-   
-    .wrapper > div {    
-        height: 10em;
-        width: 10em;
-        margin: 3em 1em;      
-    }
+    }  
 }
