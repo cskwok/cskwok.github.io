@@ -32,6 +32,7 @@ h2 {
 
 p {
     font-size: clamp(.9rem,2vw,1.2rem);
+    line-height: clamp(1.8rem,4vw,2.8rem);
 }
 
 .purple-txt {
@@ -120,8 +121,7 @@ nav {
     margin: 5rem 3rem;    
 }
 
-.about > .content > p {
-    line-height: clamp(1.2rem,4vw,2rem);
+.about > .content > p { 
     margin-top: 2rem;
 }
 
@@ -242,16 +242,24 @@ nav {
     margin: 1em auto;
 }
 
-@media(max-width: 35em) {
+@media(max-width: 55em) {   
     .home {    
-        margin-top: 0;        
+        margin-top: 0;       
+    }    
+
+    .home > .content {
+        margin: 6.5em auto;
+    }
+   
+    .home > .content > * {
+        padding: 1.3rem auto;
     }
 
     .nav-bar {
         top: 0;
         bottom: 0;
         right: 0;
-        left: 30%;
+        left: 45%;
         flex-direction: column;
         justify-content: center;
         box-shadow: none;
@@ -274,6 +282,11 @@ nav {
         background-image: url("./assets/hamburger.png");      
         background-size: cover;         
     }
+
+    .nav-bar > li > a:hover::after, 
+    .nav-bar > li > a:focus::after{    
+        transform: scale(0);  
+    }   
 
     .nav-bar[data-expanded="true"] ~ .menuBtn {
         background-image: url("./assets/cross.png");  

@@ -35,7 +35,7 @@ const scrollToElem = (elem) => {
         scrollUp = false;
     }   
     scroll = setInterval(()=>{   
-        scrollUp ? (scrollOffset -= 30) : (scrollOffset += 30);
+        scrollUp ? (scrollOffset -= 50) : (scrollOffset += 50);
         
         if(scrollUp) {
             if(scrollOffset <= scrollDist) {
@@ -67,19 +67,23 @@ const scrollToElem = (elem) => {
 }
 
 homeBtn.addEventListener('click',(e)=>{
-    scrollToElem(home);  
+    scrollToElem(home); 
+    navBar.setAttribute("data-expanded", false); 
 });
 
 aboutBtn.addEventListener('click',(e)=>{
     scrollToElem(about);   
+    navBar.setAttribute("data-expanded", false); 
 });
 
 skillsBtn.addEventListener('click',(e)=>{
     scrollToElem(skills); 
+    navBar.setAttribute("data-expanded", false); 
 });
 
 contactBtn.addEventListener('click',(e)=>{
-    scrollToElem(contact);  
+    scrollToElem(contact); 
+    navBar.setAttribute("data-expanded", false);  
 });
 
 menuBtn.addEventListener('click', (e)=>{
