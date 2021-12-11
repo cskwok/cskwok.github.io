@@ -118,7 +118,7 @@ nav {
 
 .about > .content {
     width: 70%;
-    margin: 3.5rem 3rem;    
+    margin: 5rem 3rem;    
 }
 
 .about > .content > p {
@@ -155,6 +155,10 @@ nav {
     clip-path: polygon(0 0, 0 100%, 100% 100%);
 }
 
+.skills > .content {
+    margin-top: 5rem;
+}
+
 .skills > .content > h2 {
     margin: auto 2em;
 }
@@ -163,7 +167,7 @@ nav {
 .wrapper {
     width: 100%;   
     margin: 1.5em auto;
-    padding-bottom: 3em;
+    padding-bottom: 5em;
     display: flex;
     flex-wrap: wrap;    
     align-items: center;
