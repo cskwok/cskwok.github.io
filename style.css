@@ -175,9 +175,7 @@ nav {
 
 .scroll-container > .wrapper {
     max-width: 70%;
-    display: flex;
-    overflow-x: auto; 
-    scrollbar-width: none;   
+    display: flex;     
     align-items: center;
     justify-content: space-between;
     font-size: clamp(.9rem,2vw,1.2rem);    
@@ -185,17 +183,13 @@ nav {
     color: var(--clr-text);
     border-radius: 2em;
     height: 9.5em;
-}
-
-.scroll-container > .warpper::-webkit-scrollbar {    
-    width: 0;
-    display: none;
+    overflow: hidden;
 }
 
 .scroll-container > .wrapper > div {    
     height: 8em;
     width: 10em;   
-    margin-right: 5em;  
+    margin: auto 2em;  
     display: flex;
     justify-content: space-between;  
     align-items: center;  
@@ -214,19 +208,15 @@ nav {
 }
 
 .scroll-container > .scroll-control {  
-    display: flex;     
-    height: 5rem;
-    width: 5rem;
-    font-size: 5rem;
+    display: flex;
+    margin: 1rem;
+    font-size: 3.5rem;
+    color: var(--clr-primary-clear);   
     justify-content: center;
-    align-items: center;
-    opacity: .3;    
+    align-items: center;       
     cursor: default;
-}
-
-.scroll-container > .scroll-control:hover,
-.scroll-container > .scroll-control:focus {  
-    opacity: .8;    
+    background-color: transparent;
+    border: none;
 }
 
 .contact {
@@ -294,8 +284,4 @@ nav {
     .skills > .content {
         justify-content: flex-start;        
     }  
-
-    .scroll-container > .scroll-control {
-        display: none;
-    }
 }

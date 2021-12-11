@@ -12,12 +12,13 @@ const navBar = document.querySelector(".nav-bar");
 const menuBtn = document.querySelector(".menuBtn");
 
 const wrapper = document.querySelector(".wrapper");
+const wrapperItem = wrapper.querySelector("div");
 const scrollContainer = document.querySelector(".scroll-container");
 const scrollLeftBtn = scrollContainer.querySelector(".left");
 const scrollRightBtn = scrollContainer.querySelector(".right");
 
-let scroll = null;
-let scrollOffset = 0;
+//let scroll = null;
+//let scrollOffset = 0;
 
 const getElementPos = (elem) => {
     return elem.offsetTop - home.offsetTop;    
@@ -58,13 +59,39 @@ menuBtn.addEventListener('click', (e)=>{
     }
 });
 
+scrollLeftBtn.addEventListener('click', ()=>{
+    let wrapperWidth = wrapper.offsetWidth;
+    let itemWidth = wrapperItem.offsetWidth;
+    let scroll = wrapper.scrollLeft - itemWidth * 2;
+    if(scroll - itemWidth * 2 <= 0) {
+        scroll = 0;
+    }    
+    wrapper.scrollTo({             
+        left: scroll,
+        behavior: 'smooth'
+    });
+});
+
+scrollRightBtn.addEventListener('click', ()=>{
+    let wrapperWidth = wrapper.offsetWidth;
+    let itemWidth = wrapperItem.offsetWidth;
+    let scroll = wrapper.scrollLeft + itemWidth * 2;
+    if(scroll + itemWidth * 2 >= wrapper.scrollWidth - wrapper.clientWidth) {
+        scroll = wrapper.scrollWidth - wrapper.clientWidth;
+    }  
+    wrapper.scrollTo({             
+        left: scroll,
+        behavior: 'smooth'
+    });
+});
+
 /*
 wrapper.addEventListener('scroll', ()=>{
     //console.log(wrapper.scrollWidth - wrapper.clientWidth);
     console.log(wrapper.scrollLeft);    
 });
 */
-
+/*
 const scrollContX = (isLeft)=>{
     clearInterval(scroll);
     scrollOffset = wrapper.scrollLeft;
@@ -118,3 +145,4 @@ scrollRightBtn.addEventListener('mouseout', ()=>{
     console.log("test2");   
     clearInterval(scroll);       
 });
+*/
