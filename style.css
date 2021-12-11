@@ -9,6 +9,7 @@
 
 :root {
     --clr-primary: #D7CDCC;
+    --clr-primary-clear: rgba(215, 205, 204, .5);
     --clr-secondary: #59656F;    
     --clr-white: #FFFFFF;
     --clr-text: #1D1E2C;
@@ -157,38 +158,75 @@ nav {
 
 .skills > .content {
     margin-top: 5rem;
+    width: 100%;
 }
 
 .skills > .content > h2 {
     margin: auto 2em;
 }
 
-
-.wrapper {
-    width: 100%;   
-    margin: 1.5em auto;
-    padding-bottom: 5em;
+.scroll-container {
     display: flex;
-    flex-wrap: wrap;    
     align-items: center;
     justify-content: center;
-    font-size: clamp(.9rem,2vw,1.2rem);
+    margin: 5rem auto;
+    padding-bottom: 5rem;
 }
 
-.wrapper > div {    
-    height: 5em;
-    width: 5em;   
-    margin: 3em 5em;
+.scroll-container > .wrapper {
+    max-width: 70%;
     display: flex;
-    justify-content: center;
+    overflow-x: auto; 
+    scrollbar-width: none;   
     align-items: center;
+    justify-content: space-between;
+    font-size: clamp(.9rem,2vw,1.2rem);    
+    background-color: var(--clr-primary-clear);
+    color: var(--clr-text);
+    border-radius: 2em;
+    height: 9.5em;
+}
+
+.scroll-container > .warpper::-webkit-scrollbar {    
+    width: 0;
+    display: none;
+}
+
+.scroll-container > .wrapper > div {    
+    height: 8em;
+    width: 10em;   
+    margin-right: 5em;  
+    display: flex;
+    justify-content: space-between;  
+    align-items: center;  
     flex-direction: column;   
     transition: transform 0.35s ease-out;
     border-radius: 2em;
 }
 
-.wrapper > div:hover {   
+.scroll-container > .wrapper > div > img {
+    height: 6em;
+    width: 6em; 
+}
+
+.scroll-container > .wrapper > div:hover {   
     transform: scale(1.1);
+}
+
+.scroll-container > .scroll-control {  
+    display: flex;     
+    height: 5rem;
+    width: 5rem;
+    font-size: 5rem;
+    justify-content: center;
+    align-items: center;
+    opacity: .3;    
+    cursor: default;
+}
+
+.scroll-container > .scroll-control:hover,
+.scroll-container > .scroll-control:focus {  
+    opacity: .8;    
 }
 
 .contact {
@@ -252,7 +290,12 @@ nav {
     .nav-bar[data-expanded="true"] ~ .menuBtn {
         background-image: url("./assets/cross.png");  
     }
+
     .skills > .content {
         justify-content: flex-start;        
     }  
+
+    .scroll-container > .scroll-control {
+        display: none;
+    }
 }
