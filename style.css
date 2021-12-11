@@ -14,8 +14,6 @@
     --clr-white: #FFFFFF;
     --clr-text: #1D1E2C;
     --clr-text-secondary: #9C528B;
-
-    scroll-behavior: smooth;
 }
 
 body {
