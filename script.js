@@ -29,9 +29,9 @@ const scrollToElem = (elem) => {
     scrollOffset = document.documentElement.scrollTop || document.body.scrollTop;
     let scrollDist = getElementPos(elem);   
     let scrollUp = false;
-    let speed = 50;
+    let speed = 30;
     if(Math.abs(scrollDist-scrollOffset) >= home.offsetHeight) {
-        speed = 70;
+        speed = 50;
     }
     if(Math.abs(scrollDist-scrollOffset) >= home.offsetHeight * 2) {
         speed = 100;
