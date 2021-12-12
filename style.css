@@ -155,7 +155,8 @@ nav {
 }
 
 .skills > .content {
-    margin-top: 5rem;
+    margin-top: 5em;
+    margin-bottom: 6em;
     width: 100%;
 }
 
@@ -166,21 +167,20 @@ nav {
 .scroll-container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin: 5rem auto;
-    padding-bottom: 5rem;
+    background-color: var(--clr-primary-clear);
 }
 
 .scroll-container > .wrapper {
-    max-width: 70%;
+    max-width: 85%;
     display: flex;     
     align-items: center;
     justify-content: space-between;
     font-size: clamp(.9rem,2vw,1.2rem);    
-    background-color: var(--clr-primary-clear);
     color: var(--clr-text);
     border-radius: 2em;
-    height: 9.5em;
+    height: 12em;
     overflow: hidden;
 }
 
@@ -209,7 +209,7 @@ nav {
     display: flex;
     margin: 1rem;
     font-size: 3.5rem;
-    color: var(--clr-primary-clear);   
+    color: var(--clr-white);   
     justify-content: center;
     align-items: center;       
     cursor: default;
@@ -235,10 +235,27 @@ nav {
 }
 
 .contact > .content {
-    margin: 3em auto;
+    margin: 5em auto;
+    display: flex;
+    flex-direction: column;    
+    justify-content: center;
+    align-items: center;
 }
 
 .contact > .content > p {
+    margin: .8em auto;
+}
+
+.contact > .content > .contactBtn {
+    text-decoration: none;  
+    padding: 1em 2.5em;
+    color: var(--clr-white);
+    background-color: var(--clr-secondary);
+    margin: 1em auto;
+}
+
+.contact img {   
+    width: 3rem;
     margin: 1em auto;
 }
 
@@ -259,7 +276,7 @@ nav {
         top: 0;
         bottom: 0;
         right: 0;
-        left: 45%;
+        left: 50%;
         flex-direction: column;
         justify-content: center;
         box-shadow: none;
@@ -295,4 +312,16 @@ nav {
     .skills > .content {
         justify-content: flex-start;        
     }  
+}
+
+@media(max-width: 44em) {
+    .nav-bar {        
+        left: 40%;        
+    }
+}
+
+@media(max-width: 33em) {
+    .nav-bar {        
+        left: 30%;        
+    }
 }

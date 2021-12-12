@@ -29,13 +29,20 @@ const scrollToElem = (elem) => {
     scrollOffset = document.documentElement.scrollTop || document.body.scrollTop;
     let scrollDist = getElementPos(elem);   
     let scrollUp = false;
+    let speed = 50;
+    if(Math.abs(scrollDist-scrollOffset) >= home.offsetHeight) {
+        speed = 70;
+    }
+    if(Math.abs(scrollDist-scrollOffset) >= home.offsetHeight * 2) {
+        speed = 100;
+    }
     if(scrollDist <= scrollOffset) {
         scrollUp = true;
     }else{
         scrollUp = false;
-    }   
+    }
     scroll = setInterval(()=>{   
-        scrollUp ? (scrollOffset -= 50) : (scrollOffset += 50);
+        scrollUp ? (scrollOffset -= speed) : (scrollOffset += speed);
         
         if(scrollUp) {
             if(scrollOffset <= scrollDist) {
@@ -94,17 +101,17 @@ menuBtn.addEventListener('click', (e)=>{
     }
 });
 
-scrollLeftBtn.addEventListener('click', ()=>{
+const scrollLeft = (speed = 20, toStart = false)=>{
     clearInterval(scroll);
     scrollOffset = wrapper.scrollLeft;
     let wrapperWidth = wrapper.offsetWidth;
     let itemWidth = wrapperItem.offsetWidth;
     let scrollDist = wrapper.scrollLeft - itemWidth * 2;
-    if(scrollDist - itemWidth * 2 <= 0) {
+    if(scrollDist - itemWidth * 2 <= 0 || toStart) {
         scrollDist = 0;
     }    
     scroll = setInterval(()=>{     
-        scrollOffset = scrollOffset -= 10;
+        scrollOffset = scrollOffset -= speed;
         if(scrollOffset <= scrollDist) {
             
             scrollOffset = scrollDist;
@@ -116,19 +123,19 @@ scrollLeftBtn.addEventListener('click', ()=>{
             clearInterval(scroll);
         }
     }, 10);  
-});
+};
 
-scrollRightBtn.addEventListener('click', ()=>{
+const scrollRight = (speed = 20, toEnd = false)=>{
     clearInterval(scroll);
     scrollOffset = wrapper.scrollLeft;
     let wrapperWidth = wrapper.offsetWidth;
     let itemWidth = wrapperItem.offsetWidth;
     let scrollDist = wrapper.scrollLeft + itemWidth * 2;
-    if(scrollDist + itemWidth * 2 >= wrapper.scrollWidth - wrapper.clientWidth) {
+    if(scrollDist + itemWidth * 2 >= wrapper.scrollWidth - wrapper.clientWidth || toEnd) {
         scrollDist = wrapper.scrollWidth - wrapper.clientWidth;
     }  
     scroll = setInterval(()=>{      
-        scrollOffset = scrollOffset += 10;
+        scrollOffset = scrollOffset += speed;
         if(scrollOffset >= scrollDist) {
             
             scrollOffset = scrollDist;
@@ -140,4 +147,20 @@ scrollRightBtn.addEventListener('click', ()=>{
             clearInterval(scroll);
         }
     }, 10);
+};
+
+scrollLeftBtn.addEventListener('click', ()=>{
+    if(wrapper.scrollLeft === 0) {
+        scrollRight(60, true);
+    } else {
+        scrollLeft();
+    }    
+});
+
+scrollRightBtn.addEventListener('click', ()=>{  
+    if(wrapper.scrollLeft >= (wrapper.scrollWidth - wrapper.clientWidth - wrapperItem.offsetWidth)){
+        scrollLeft(60, true);
+    } else {
+        scrollRight();
+    }    
 });
