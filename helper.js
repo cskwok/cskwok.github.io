@@ -4,6 +4,8 @@ let stop = false;
 
 let update = null;
 
+let lastPos = null;
+
 const updateFrame = (time) => {
     if(lastTime == null) {
         lastTime = time;        
@@ -53,7 +55,7 @@ export const scrollHorizontal = (elem, dest, speed)=> {
             if(elem.scrollLeft <= dest) {
                 stopAnimation();
             }
-        }       
+        }         
     }); 
 }
 
@@ -66,16 +68,20 @@ export const scrollVertical = (elem, dest, speed)=> {
         let scrollDist = elem.scrollTop;
         if(dest > elem.scrollTop) {
             scrollDist = Math.min(elem.scrollTop + deltaTime * 0.1 * speed, dest);
-            elem.scrollTop = scrollDist;
-            if(elem.scrollTop >= dest) {
+            elem.scrollTop = scrollDist;            
+            if(elem.scrollTop >= dest || elem.scrollTop == lastPos) {
                 stopAnimation();
+                lastPos = null;
             }
+            lastPos = elem.scrollTop;
         } else {
             scrollDist = Math.max(elem.scrollTop - deltaTime * 0.1 * speed, dest);
             elem.scrollTop = scrollDist;
-            if(elem.scrollTop <= dest) {
+            if(elem.scrollTop <= dest || elem.scrollTop == lastPos) {
                 stopAnimation();
+                lastPos = null;
             }
+            lastPos = elem.scrollTop;
         }        
     }); 
 }
