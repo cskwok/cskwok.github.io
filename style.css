@@ -23,7 +23,7 @@ body {
 }
 
 h1 {
-    font-size: clamp(2.0rem,6vw,4rem);
+    font-size: clamp(2.5rem,6vw,4rem);
 }
 
 h2 {
@@ -31,7 +31,7 @@ h2 {
 }
 
 p {
-    font-size: clamp(0.8rem,2.3vw,1.2rem);
+    font-size: clamp(.9rem,2vw,1.2rem);
     line-height: clamp(1.8rem,4vw,2.8rem);
 }
 
@@ -47,12 +47,12 @@ p {
 .container {
     display: flex; 
     width: 100%;
-    min-height: 33rem;   
-    height: max(80vh, 35rem);    
+    min-height: 80vh;   
 }
 
 nav {
     position: relative;
+    user-select: none;
 }
 
 .menuBtn {
@@ -171,6 +171,7 @@ nav {
     justify-content: space-between;
     margin: 5rem auto;
     background-color: var(--clr-primary-clear);
+    user-select: none;
 }
 
 .scroll-container > .wrapper {
@@ -253,11 +254,12 @@ nav {
     color: var(--clr-white);
     background-color: var(--clr-secondary);
     margin: 1em auto;
+    user-select: none;
 }
 
 .contact img {   
     width: 3rem;
-    margin: 1em auto;
+    margin: 1em auto;    
 }
 
 @media(max-width: 55em) {   
@@ -266,7 +268,7 @@ nav {
     }    
 
     .home > .content {
-        margin: 9.5em auto;
+        margin: 6.5em auto;
     }
    
     .home > .content > * {
@@ -282,7 +284,7 @@ nav {
         justify-content: center;
         box-shadow: none;
         transform: translateX(100%);
-        transition: transform 350ms ease-out;
+        transition: transform .35s ease-out;
     }
 
     .nav-bar[data-expanded="true"]{
