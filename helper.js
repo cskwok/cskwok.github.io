@@ -53,8 +53,7 @@ export const scrollHorizontal = (elem, dest, speed)=> {
             if(elem.scrollLeft <= dest) {
                 stopAnimation();
             }
-        } 
-        console.log(elem.scrollLeft);
+        }       
     }); 
 }
 
@@ -77,7 +76,6 @@ export const scrollVertical = (elem, dest, speed)=> {
             if(elem.scrollTop <= dest) {
                 stopAnimation();
             }
-        } 
-        console.log(elem.scrollTop);
+        }        
     }); 
 }
