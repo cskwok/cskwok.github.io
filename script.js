@@ -1,5 +1,8 @@
 gsap.registerPlugin(ScrollToPlugin);
 
+const message = document.querySelector(".message");
+const messageBtn = document.querySelector(".message>button");
+
 const aboutContent = document.querySelector(".about>.content");
 
 const homeBtn = document.querySelector(".homeBtn");
@@ -21,6 +24,7 @@ let homeTl = gsap.timeline();
 homeTl.fromTo(".home-text", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: .8, ease: Power2.easeOut });
 homeTl.fromTo(".home-img", { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: .8, ease: Power2.easeOut }, "<");
 homeTl.fromTo(".home-img>img", { y: 0 }, { y: -20, duration: .8, yoyo: true, repeat: -1, ease: Power2.easeOut });
+homeTl.fromTo(".message", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: .5, ease: Power2.easeOut }, "<");
 
 const aboutObserver = new IntersectionObserver((entries) => {
     if (!entries[0].isIntersecting) return;
@@ -33,6 +37,16 @@ const aboutObserver = new IntersectionObserver((entries) => {
 });
 
 aboutObserver.observe(aboutContent.querySelector("p"));
+
+
+
+messageBtn.addEventListener('click', (e)=>{
+    gsap.fromTo(".message", { y: 0, opacity: 1 }, { y: 40, opacity: 0, duration: .8, ease: Power2.easeOut }).then(()=>{
+        message.style.display = "none";
+    });
+        
+   
+});
 
 //scrolling
 homeBtn.addEventListener('click', (e) => {
