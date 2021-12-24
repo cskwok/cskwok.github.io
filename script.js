@@ -1,9 +1,6 @@
-import { startAnimation, stopAnimation, deltaTime, scrollHorizontal, scrollVertical } from "./helper.js";
+gsap.registerPlugin(ScrollToPlugin);
 
-const home = document.querySelector(".home");
-const about = document.querySelector(".about");
-const skills = document.querySelector(".skills");
-const contact = document.querySelector(".contact");
+const aboutContent = document.querySelector(".about>.content");
 
 const homeBtn = document.querySelector(".homeBtn");
 const aboutBtn = document.querySelector(".aboutBtn");
@@ -15,94 +12,78 @@ const menuBtn = document.querySelector(".menuBtn");
 
 const wrapper = document.querySelector(".wrapper");
 const wrapperItem = wrapper.querySelector("div");
-const scrollContainer = document.querySelector(".scroll-container");
-const scrollLeftBtn = scrollContainer.querySelector(".left");
-const scrollRightBtn = scrollContainer.querySelector(".right");
+const skillsContainer = document.querySelector(".skills-container");
+const scrollLeftBtn = document.querySelector(".scroll-control.left");
+const scrollRightBtn = document.querySelector(".scroll-control.right");
+//animation
 
-let scroll = null;
-let scrollOffset = 0;
+let homeTl = gsap.timeline();
+homeTl.fromTo(".home-text", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: .8, ease: Power2.easeOut });
+homeTl.fromTo(".home-img", { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: .8, ease: Power2.easeOut }, "<");
+homeTl.fromTo(".home-img>img", { y: 0 }, { y: -20, duration: .8, yoyo: true, repeat: -1, ease: Power2.easeOut });
 
-const getElementPos = (elem) => {
-    return elem.offsetTop - home.offsetTop;    
-}
-
-const scrollToElem = (elem) => {    
-    scrollOffset = document.documentElement.scrollTop || document.body.scrollTop;
-    let scrollDist = getElementPos(elem);
-    let speed = 20;
-    if(Math.abs(scrollDist-scrollOffset) >= home.offsetHeight) {
-        speed = 30;
-    }
-    if(Math.abs(scrollDist-scrollOffset) >= home.offsetHeight * 2) {
-        speed = 40;
-    } 
-    if (document.body.scrollTop) {
-        scrollVertical(document.body, scrollDist, speed);
-    } else {
-        scrollVertical( document.documentElement, scrollDist, speed);
-    }
-    
-}
-
-homeBtn.addEventListener('click',(e)=>{
-    scrollToElem(home); 
-    navBar.setAttribute("data-expanded", false); 
+const aboutObserver = new IntersectionObserver((entries) => {
+    if (!entries[0].isIntersecting) return;
+    let abourTl = gsap.timeline();
+    abourTl.fromTo(".about>.content>h2", { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: .8, ease: Power2.easeOut });
+    abourTl.fromTo(".about>.content>p", { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: .8, ease: Power2.easeOut }, "<");
+    aboutObserver.unobserve(entries[0].target);
+}, {
+    threshold: 1
 });
 
-aboutBtn.addEventListener('click',(e)=>{
-    scrollToElem(about);   
-    navBar.setAttribute("data-expanded", false); 
+aboutObserver.observe(aboutContent.querySelector("p"));
+
+//scrolling
+homeBtn.addEventListener('click', (e) => {
+    gsap.to(window, { duration: 1, scrollTo: { y: 0 }, ease: Power2.easeOut });
+    navBar.setAttribute("data-expanded", false);
 });
 
-skillsBtn.addEventListener('click',(e)=>{
-    scrollToElem(skills); 
-    navBar.setAttribute("data-expanded", false); 
+aboutBtn.addEventListener('click', (e) => {
+    gsap.to(window, { duration: 1, scrollTo: ".about", ease: Power2.easeOut });
+    navBar.setAttribute("data-expanded", false);
 });
 
-contactBtn.addEventListener('click',(e)=>{
-    scrollToElem(contact); 
-    navBar.setAttribute("data-expanded", false);  
+skillsBtn.addEventListener('click', (e) => {
+    gsap.to(window, { duration: 1, scrollTo: ".skills", ease: Power2.easeOut });
+    navBar.setAttribute("data-expanded", false);
 });
 
-menuBtn.addEventListener('click', (e)=>{
-    if(navBar.getAttribute("data-expanded") === "true") {
-        navBar.setAttribute("data-expanded", false);
-    } else {
-        navBar.setAttribute("data-expanded", true);
-    }
+contactBtn.addEventListener('click', (e) => {
+    gsap.to(window, { duration: 1, scrollTo: ".contact", ease: Power2.easeOut });
+    navBar.setAttribute("data-expanded", false);
 });
 
-const scrollLeft = (speed = 4.5, toStart = false)=>{
-    scrollOffset = wrapper.scrollLeft; 
+const scrollLeft = (duration = 1, toStart = false)=>{   
     let itemWidth = wrapperItem.offsetWidth;
     let scrollDist = wrapper.scrollLeft - itemWidth * 2;
     if(scrollDist - itemWidth * 2 <= 0 || toStart) {
         scrollDist = 0;
-    }     
-    scrollHorizontal(wrapper, scrollDist, speed);
+    } 
+    gsap.to(wrapper, { duration: duration, scrollTo: {x: scrollDist}, ease: Power2.easeOut });
 };
 
-const scrollRight = (speed = 4.5, toEnd = false)=>{    
-    scrollOffset = wrapper.scrollLeft;
+const scrollRight = (duration = 1, toEnd = false)=>{
     let itemWidth = wrapperItem.offsetWidth;
     let scrollDist = wrapper.scrollLeft + itemWidth * 2;
     if(scrollDist + itemWidth * 2 >= wrapper.scrollWidth - wrapper.clientWidth || toEnd) {
         scrollDist = wrapper.scrollWidth - wrapper.clientWidth;
-    } 
-    scrollHorizontal(wrapper, scrollDist, speed);
+    }
+    gsap.to(wrapper, { duration: duration, scrollTo: {x: scrollDist}, ease: Power2.easeOut });
 };
 
 scrollLeftBtn.addEventListener('click', ()=>{
     if(wrapper.scrollLeft === 0) {
-        scrollRight(20, true);
+        scrollRight(0.5, true);
     } else {
-        scrollLeft(9);
+        scrollLeft();
     }
 });
 scrollRightBtn.addEventListener('click', ()=>{  
     if(wrapper.scrollLeft >= (wrapper.scrollWidth - wrapper.clientWidth - wrapperItem.offsetWidth)){
-        scrollLeft(20, true);
+        scrollLeft(0.5, true);
     } else {
-        scrollRight(9);
+        scrollRight();
     }     
 });

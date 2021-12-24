@@ -1,55 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terry Kwok's Personal Website</title>
-    <link rel="stylesheet" href="./style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.0/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.0/ScrollToPlugin.min.js" defer></script>
+    <link rel="stylesheet" href="style.css">
     <script src="./script.js" defer type="module"></script>
 </head>
-
 <body>
     <div class="web-container">
-        <nav>
-            <ul class="nav-bar" data-expanded="false">
+        <nav>            
+            <ul class="nav-bar" data-expanded="false">                
                 <li><a class="homeBtn">Home</a></li>
                 <li><a class="aboutBtn">About</a></li>
                 <li><a class="skillsBtn">Skills</a></li>
                 <li><a class="contactBtn">Contact</a></li>
-            </ul> 
-            <div class="menuBtn"></div>          
+            </ul>
+            <div class="menuBtn"></div>
         </nav>
         <main>
-            <section class="home">
+            <div class="container home">
                 <div class="content">
-                    <div class="home-text">
-                        <h1>Terry Kwok</h1>
-                        <p class="sub-heading">Computer Science fresh graduate From HKUST</p>
-                        <p class="sub-heading">passionate in Programming</p>
-                        <p class="sub-heading">Aim to be a Web Developer</p>
-                    </div>
-                    <div class="home-img">
-                        <img src="./assets/website-img.svg" alt="Home image" draggable="false">
-                        <div class="shadow"></div>
-                    </div>
+                    <h1>&lt; Terry Kwok <span class="purple-txt">/</span> &gt;</h1>
+                    <p>{ A <span class="purple-txt">Computer Science</span> fresh graduate From HKUST and passionate in <span class="purple-txt">Programming</span> }</p>
                 </div>
-                
-            </section>
-            <section class="about">
+            </div>
+            <div class="container about">               
                 <div class="content">
-                    <h2>About</h2>
-                    <p>Hello, I am Terry. I am recently graduated from HKUST with bachelor’s degree in computer science and is deeply passionate about programming. I always seek knowledge about different frameworks, tools and programming languages to improve my skills. I enjoy web programming very much!</p>
+                    <h2 class="purple-txt">About</h2>
+                    <p>I am recently graduated from HKUST with bachelor’s degree in computer science and is deeply passionate about programming. I always seek knowledge about different frameworks, tools and programming languages from the Internet to improve my skills.</p>
                 </div>
-            </section>
-            <section class="skills">
+            </div>
+            <div class="container skills">
                 <div class="content">
                     <h2>Skills</h2>
-                    <div class="skills-container"> 
-                        <div class="scroll-control left">&lt;</div>                       
+
+                    <div class="scroll-container">
+                        <button data-click="false" class="scroll-control left">&lt;</button>
                         <div class="wrapper">
                             <div><img src="../assets/csharp.svg" alt="C# Image"><p>C#</p></div>
                             <div><img src="../assets/cpp.svg" alt="C++ Image"><p>C++</p></div>
@@ -61,21 +49,21 @@
                             <div><img src="../assets/node.svg" alt="Node.js Image"><p>Node.js</p></div>
                             <div><img src="../assets/react.svg" alt="React.js Image"><p>React.js</p></div>
                             <div><img src="../assets/mysql.svg" alt="MySQL Image"><p>MySQL</p></div>
-                        </div>   
-                        <div class="scroll-control right">&gt;</div>                  
-                    </div>
+                        </div>
+                        <button class="scroll-control right">&gt;</button>
+                    </div>             
                 </div>
-            </section>
-            <section class="contact">
+            </div>
+            <div class="container contact">
                 <div class="content">
                     <h2>Contact</h2>
                     <p>Terry Kwok</p>                  
                     <a class="contactBtn" href="mailto:kwok876@gmail.com">Find Me</a>
                     <a href="https://github.com/cskwok" target="_blank"><img src="../assets/github.png" alt="GitHub link"></a>
                 </div>
-            </section>
+                
+            </div>
         </main>
     </div>
 </body>
-
 </html>
