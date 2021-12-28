@@ -322,7 +322,7 @@ section.about .content h2::after {
 .skills-container > .wrapper > div {    
     height: 8em;
     width: 10em;   
-    margin: auto 2em;  
+    margin: auto 2.5em;  
     display: flex;
     justify-content: space-between;  
     align-items: center;  
