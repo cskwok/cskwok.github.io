@@ -67,22 +67,22 @@ menuBtn.addEventListener('click', (e)=>{
 //scrolling
 homeBtn.addEventListener('click', (e) => {
     gsap.to(window, { duration: 1, scrollTo: { y: 0 }, ease: Power2.easeOut });
-    navBar.setAttribute("data-expanded", false);
+    menuBtn.setAttribute("data-expanded", false);
 });
 
 aboutBtn.addEventListener('click', (e) => {
     gsap.to(window, { duration: 1, scrollTo: getElementPos(about), ease: Power2.easeOut });
-    navBar.setAttribute("data-expanded", false);
+    menuBtn.setAttribute("data-expanded", false);
 });
 
 skillsBtn.addEventListener('click', (e) => {
     gsap.to(window, { duration: 1, scrollTo: getElementPos(skills), ease: Power2.easeOut });
-    navBar.setAttribute("data-expanded", false);
+    menuBtn.setAttribute("data-expanded", false);
 });
 
 contactBtn.addEventListener('click', (e) => {
     gsap.to(window, { duration: 1, scrollTo: getElementPos(contact), ease: Power2.easeOut });
-    navBar.setAttribute("data-expanded", false);
+    menuBtn.setAttribute("data-expanded", false);
 });
 
 const scrollLeft = (duration = 1, toStart = false)=>{   
