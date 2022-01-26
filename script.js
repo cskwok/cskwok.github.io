@@ -3,6 +3,7 @@ gsap.registerPlugin(ScrollToPlugin);
 const home = document.querySelector(".home");
 const about = document.querySelector(".about");
 const skills = document.querySelector(".skills");
+const projects = document.querySelector(".projects");
 const contact = document.querySelector(".contact");
 
 const message = document.querySelector(".message");
@@ -13,6 +14,7 @@ const aboutContent = document.querySelector(".about>.content");
 const homeBtn = document.querySelector(".homeBtn");
 const aboutBtn = document.querySelector(".aboutBtn");
 const skillsBtn = document.querySelector(".skillsBtn");
+const projectsBtn = document.querySelector(".projectsBtn");
 const contactBtn = document.querySelector(".contactBtn");
 
 const navBar = document.querySelector(".nav-bar");
@@ -77,6 +79,11 @@ aboutBtn.addEventListener('click', (e) => {
 
 skillsBtn.addEventListener('click', (e) => {
     gsap.to(window, { duration: 1, scrollTo: getElementPos(skills), ease: Power2.easeOut });
+    menuBtn.setAttribute("data-expanded", false);
+});
+
+projectsBtn.addEventListener('click', (e) => {
+    gsap.to(window, { duration: 1, scrollTo: getElementPos(projects), ease: Power2.easeOut });
     menuBtn.setAttribute("data-expanded", false);
 });
 
