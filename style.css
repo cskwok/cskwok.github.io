@@ -226,6 +226,8 @@ section.skills {
 
 section.skills .content {
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 5rem 0;
     width: 100%;
 }
@@ -248,6 +250,7 @@ section.about .content h2::after {
     width: 100%;    
     user-select: none;
     position: relative;
+    margin: 2rem 0;
 }
 
 .skills-container .scroll-control {
@@ -316,6 +319,7 @@ section.projects .content{
     position: relative;   
     flex-direction: column;
     justify-content: center; 
+    align-items: center;
     width: 100%;    
     padding: 0 2em;
     margin-top: 3rem;
